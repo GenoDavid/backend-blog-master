@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const linkSchema = new mongoose.Schema({
+const linksSchema = new mongoose.Schema({
 
     poto: {
         type: String,
@@ -16,4 +16,4 @@ const linkSchema = new mongoose.Schema({
     { timestamps: true }
 )
 
-module.exports = mongoose.model('Link', linkSchema)
+module.exports = mongoose.model('Linklink', linksSchema)
