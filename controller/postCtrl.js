@@ -2,7 +2,9 @@ const asyncHandeler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const userModel = require('../model/userModel')
 const postModel = require('../model/postModel')
-const linkmodel = require('../model/linkmodel')
+// const linkmodel = require('../model/linkmodel')
+const linksModel = require('../model/linksModel')
+// const linkmodel = require('../model/linkmodel')
 
 // ! getALl Post 
 
@@ -99,7 +101,7 @@ const deletePost = asyncHandeler(async (req, res) => {
 // !link post
 const linkPost = asyncHandeler(async (req, res) => {
     try {
-        const newPost = await linkmodel.create(req.body)
+        const newPost = await linksModel.create(req.body)
 
         res.status(200).json(newPost)
     } catch (error) {
@@ -107,43 +109,43 @@ const linkPost = asyncHandeler(async (req, res) => {
         throw new Error(error)
     }
 })
-const getlink = asyncHandeler(async (req, res) => {
+// const getlink = asyncHandeler(async (req, res) => {
 
-    const title = req.query.user
-    const search = req.query.search
-    try {
-        // let posts;
-        // if (title) {
-        //     posts = await linkmodel.find({ title })
-        // }
-        // else if (search) { posts = await linkmodel.find({ title: search }) }
-        // else {
-        //     posts = await linkmodel.find()
-        // }
-        const post = await linkmodel.find()
-        console.log(post);
-        res.status(200).json(post)
-    } catch (error) {
-        res.status(400)
-        throw new Error(error)
-    }
-})
+//     const title = req.query.user
+//     const search = req.query.search
+//     try {
+//         // let posts;
+//         // if (title) {
+//         //     posts = await linkmodel.find({ title })
+//         // }
+//         // else if (search) { posts = await linkmodel.find({ title: search }) }
+//         // else {
+//         //     posts = await linkmodel.find()
+//         // }
+//         const post = await linksModel.find()
+//         console.log(post);
+//         res.status(200).json(post)
+//     } catch (error) {
+//         res.status(400)
+//         throw new Error(error)
+//     }
+// })
 const getlinks = asyncHandeler(async (req, res) => {
 
     const title = req.query.user
     const search = req.query.search
     try {
-        // let posts;
-        // if (title) {
-        //     posts = await linkmodel.find({ title })
-        // }
-        // else if (search) { posts = await linkmodel.find({ title: search }) }
+        let posts;
+        if (title) {
+            posts = await linksModel.find({ title })
+        }
+        // else if (search) { posts = await linksModel.find({ title: search }) }
         // else {
-        //     posts = await linkmodel.find()
+        //     posts = await linksModel.find()
         // }
-        const post = await linkmodel.find()
+        const post = await linksModel.find()
         console.log(post);
-        res.status(200).json(post)
+        res.status(200).json(posts)
     } catch (error) {
         res.status(400)
         throw new Error(error)
@@ -156,6 +158,6 @@ module.exports = {
     deletePost,
     singlePost,
     linkPost,
-    getlink,
+    // getlink,
     getlinks
 }
