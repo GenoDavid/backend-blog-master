@@ -10,6 +10,7 @@ const userRoute = require('./routes/userRoutes')
 // const PostRoutes = require('./routes/PostRoutes')
 const categorie = require('./routes/categories')
 const postRoute = require('./routes/postRoutes')
+const linkRoutes = require('./routes/linkRoutes')
 
 const path = require('path')
 
@@ -50,6 +51,7 @@ app.use('/auth', authRoute)
 app.use('/user', userRoute)
 app.use('/post', postRoute)
 app.use('/categorie', categorie)
+app.use('/link', linkRoutes)
 
 
 
